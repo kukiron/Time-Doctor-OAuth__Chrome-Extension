@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, div, button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 300 !important;
+  border: 0px;
+}
+
+div.main {
+  margin: 0;
+  padding: 0;
+  width: 420px;
+  height: 600px;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+div#user_info {
+  padding-top: 20px;
+  font-weight: 14px;
+}
+
+#authenticate {
+  display: none;
+  margin-top: 7;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #e75146;
+  color: #fff;
+  border: 0px;
+  border-radius: 20px;
+  padding: 6px 20px;
+  transition: all 0.2s ease-in-out; 
+}
+
+#authenticate:hover {
+  background-color: #333;
+}
+
+#title {
+  padding: 15px 0 10px 0;
+  font-size: 16px;
+}
+
+textarea {
+  width: 85%;
+  padding-left: 20px
+}
+
+textarea#company_users {
+  min-height: 250px;
+  margin-bottom: 10px;
+}
+
+textarea#tasks_name {
+  min-height: 200px;
+}
