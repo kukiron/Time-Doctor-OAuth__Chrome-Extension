@@ -1,0 +1,30 @@
+{
+  "name": "Time Doctor OAuth 2.0",
+  "version": "1.0",
+  "manifest_version": 2,
+  "minimum_chrome_version": "33",
+
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0TCAoU9/VI2uKBfguUMmb/6tsfsq5gtlAn1G4IE8UKIhPlbZFskAPlRooB/4u6uiBP0FqGeEPehSgjdo8lLORu58+ZfNYvC25iyYzeCXfLFQQE9HCTywWqgvcSsJit8c/fm2+CfgDCeL/laG5aPlKk8v/W7uAGgVmV3cuhN6Sm0y+tPa/qIS7qiUw8ISOryJDBbkoISN91d15MjShDg5yEs2Iv/frksf+vaxRVqzTZ9phbfk8fEJGlxg1Ikg4B6mxIv0zhUw/mDVKwVwhnXfdkIfxE4GCIcxN6AMAvixH2a89/+B6Lv/SdCgRH6xQjblyubfKNo2wqy3NRf+3F3/twIDAQAB",
+  
+  "background": {
+    "scripts": ["background.js"]  
+  },
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon": "images/icon70.png",
+    "default_title": "Time Doctor Authentication"
+  },
+  "permissions": [
+    "identity",
+    "*://*.google.com/*",    
+    "*://*.timedoctor.com/*",
+    "contextMenus"
+  ]
+}
