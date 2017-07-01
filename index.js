@@ -232,7 +232,7 @@ var __td = (function() {
         var ind_task = 'Task ID: ' + user_tasks.tasks[j].task_id + '\n' + 'Project ID: ' + user_tasks.tasks[j].project_id + '\n' + 'Task Name: ' + user_tasks.tasks[j].task_name + '\n' + 'Active: ' + user_tasks.tasks[j].active;
         task_details += ind_task + '\n\n';
       }
-      el.value = '\n' + 'List of all the tasks created by the user: ' + '\n\n' + task_details;
+      el.value = '\n' + 'List of all the tasks created: ' + '\n\n' + task_details;
     } 
     else console.log('infoFetch failed', error, status);    
   }
