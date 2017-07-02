@@ -209,13 +209,13 @@ var __td = (function() {
     elem.value='';
     if (!error && status == 200) {
       console.log("Got the following user company details:", response);
-      var company_users = JSON.parse(response); console.log(company_users);
+      var company_users = JSON.parse(response); 
       var user_details = '';
       for (var i = 0; i < company_users.users.length; i++) {
         var ind_user = 'Name: ' + company_users.users[i].full_name + '\n' + 'Email: ' + company_users.users[i].email + '\n' + 'User Level: ' + company_users.users[i].level;
         user_details += ind_user + '\n\n';
       }
-      elem.value = '\n' + 'List of all the users in the company: ' + '\n\n' + user_details;
+      elem.value = '\n' + 'Company User Details: ' + '\n\n' + user_details;
     } 
     else console.log('infoFetch failed', error, status);    
   }
@@ -225,14 +225,14 @@ var __td = (function() {
     el.value='';
     if (!error && status == 200) {
       console.log("Got the following user company details:", response);
-      var user_tasks = JSON.parse(response); console.log(user_tasks);
+      var user_tasks = JSON.parse(response); 
       var task_details = '';
 
       for (var j = 0; j < user_tasks.tasks.length; j++) {
         var ind_task = 'Task ID: ' + user_tasks.tasks[j].task_id + '\n' + 'Project ID: ' + user_tasks.tasks[j].project_id + '\n' + 'Task Name: ' + user_tasks.tasks[j].task_name + '\n' + 'Active: ' + user_tasks.tasks[j].active;
         task_details += ind_task + '\n\n';
       }
-      el.value = '\n' + 'List of all the tasks created: ' + '\n\n' + task_details;
+      el.value = '\n' + 'List of the tasks the user is involved in: ' + '\n\n' + task_details;
     } 
     else console.log('infoFetch failed', error, status);    
   }
