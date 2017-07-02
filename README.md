@@ -23,6 +23,7 @@ A Chrome Extension for user authentication to Time Doctor
 7. Allow the app to have access to your Time Doctor's account. 
 8. Once accessed, you'll see the list of users in your company & details of the tasks & projects that have been created in the text area of the popup. 
 9. The user & company ID will also appear at the top of the popup window.
+10. In order to login as a different user, close your current session with the browser & then restart chrome browser. Now click the Time Doctor icon & login with the email & password of another Time Doctor account.
 
 
 ***Credentials for Testing:*** 
