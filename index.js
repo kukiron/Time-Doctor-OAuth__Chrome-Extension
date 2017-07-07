@@ -1,5 +1,4 @@
 var __td = (function() {
-  'use strict';
 
   var company_users_info_api,
       tasks_api,
@@ -31,7 +30,7 @@ var __td = (function() {
           'url': 'https://webapi.timedoctor.com/oauth/v2/auth?' +
                  'client_id=' + clientId +
                  '&response_type=code&redirect_uri=' + encodeURIComponent(redirectUri)
-        }
+        };
         chrome.identity.launchWebAuthFlow(options, function(redirectUri) {
           console.log('launchWebAuthFlow completed', chrome.runtime.lastError,
               redirectUri);
@@ -64,7 +63,7 @@ var __td = (function() {
           console.log('providerResponse', values);
           if (values.hasOwnProperty('code'))
             exchangeCodeForToken(values.code);
-          else 
+          else
             callback(new Error('Authorization code not avialable.'));
         }
 
@@ -83,7 +82,7 @@ var __td = (function() {
               var response = JSON.parse(this.responseText);
               if (response.hasOwnProperty('access_token')) setAccessToken(response.access_token);
               else callback(new Error('Cannot obtain access_token from code.'));
-            } 
+            }
             else {
               console.log('code exchange status:', this.status);
               callback(new Error('Code exchange failed'));
@@ -93,7 +92,7 @@ var __td = (function() {
         }
 
         function setAccessToken(token) {
-          access_token = token; 
+          access_token = token;
           console.log('Setting access_token: ', access_token);
           callback(null, access_token);
         }
@@ -103,7 +102,7 @@ var __td = (function() {
         if (access_token == token_to_remove)
           access_token = null;
       }
-    }
+    };
   })();
 
   function xhrWithAuth(method, url, interactive, callback) {
@@ -140,7 +139,7 @@ var __td = (function() {
         tokenFetcher.removeCachedToken(access_token);
         access_token = null;
         getToken();
-      } 
+      }
       else callback(null, this.status, this.response);
     }
   }
@@ -166,12 +165,12 @@ var __td = (function() {
 
   function onUserInfoFetched(error, status, response) {
     if (!error && status == 200) {
-      console.log("Got the following user info: " + response);
-      var user_info = JSON.parse(response); 
-      company_id = user_info.accounts[0].company_id; 
+      console.log('Got the following user info: ' + response);
+      var user_info = JSON.parse(response);
+      company_id = user_info.accounts[0].company_id;
       user_id = user_info.accounts[0].user_id;
-      company_users_info_api = user_info.user.url + '/' + company_id + '/' + 'users'; 
-      tasks_api = company_users_info_api + '/' + user_id + '/' + 'tasks'; 
+      company_users_info_api = user_info.user.url + '/' + company_id + '/' + 'users';
+      tasks_api = company_users_info_api + '/' + user_id + '/' + 'tasks';
 
       populateUserInfo(user_info);
       hideButton(authenticate);
@@ -186,13 +185,12 @@ var __td = (function() {
   function populateUserInfo(user_info) {
     var elem = user_info_div;
     var nameElem = document.createElement('div');
-    nameElem.innerHTML = "Hello, " + "<strong>" + user_info.user.full_name + "</strong><br>"
-      + "Your Company ID: " + "<strong>" + user_info.accounts[0].company_id + "</strong>" + ' & User ID: ' + "<strong>" + user_info.accounts[0].user_id + "</strong>";
+    nameElem.innerHTML = 'Hello, ' + '<strong>' + user_info.user.full_name + '</strong>' + '<br>Your Company ID: ' + '<strong>' + user_info.accounts[0].company_id + '</strong>' + ' & User ID: ' + '<strong>' + user_info.accounts[0].user_id + '</strong>';
     elem.appendChild(nameElem);
 
     var name = companyName;
     var titlElem = document.createElement('span');
-    titlElem.innerHTML = "Company name: " + "<strong>" + user_info.accounts[0].company_name + "</strong>";
+    titlElem.innerHTML = 'Company name: ' + '<strong>' + user_info.accounts[0].company_name + '</strong>';
     name.appendChild(titlElem);
   }
 
@@ -208,24 +206,24 @@ var __td = (function() {
     var elem = document.querySelector('#company_users');
     elem.value='';
     if (!error && status == 200) {
-      console.log("Got the following user company details:", response);
-      var company_users = JSON.parse(response); 
+      console.log('Got the following user company details:', response);
+      var company_users = JSON.parse(response);
       var user_details = '';
       for (var i = 0; i < company_users.users.length; i++) {
         var ind_user = 'Name: ' + company_users.users[i].full_name + '\n' + 'Email: ' + company_users.users[i].email + '\n' + 'User Level: ' + company_users.users[i].level;
         user_details += ind_user + '\n\n';
       }
       elem.value = '\n' + 'Company User Details: ' + '\n\n' + user_details;
-    } 
-    else console.log('infoFetch failed', error, status);    
+    }
+    else console.log('infoFetch failed', error, status);
   }
 
   function onTasksFetched(error, status, response) {
     var el = document.querySelector('#tasks_name');
     el.value='';
     if (!error && status == 200) {
-      console.log("Got the following user company details:", response);
-      var user_tasks = JSON.parse(response); 
+      console.log('Got the following user company details:', response);
+      var user_tasks = JSON.parse(response);
       var task_details = '';
 
       for (var j = 0; j < user_tasks.tasks.length; j++) {
@@ -233,8 +231,8 @@ var __td = (function() {
         task_details += ind_task + '\n\n';
       }
       el.value = '\n' + 'List of the tasks the user is involved in: ' + '\n\n' + task_details;
-    } 
-    else console.log('infoFetch failed', error, status);    
+    }
+    else console.log('infoFetch failed', error, status);
   }
 
   // Handlers for the buttons's onclick events.
@@ -242,7 +240,7 @@ var __td = (function() {
   function interactiveSignIn() {
     disableButton(authenticate);
     tokenFetcher.getToken(true, function(error, access_token) {
-      if (error) showButton(authenticate); 
+      if (error) showButton(authenticate);
       else getUserInfo(true);
     });
   }
